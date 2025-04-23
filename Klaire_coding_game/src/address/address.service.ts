@@ -59,7 +59,7 @@ export class AddressService {
       const response = await firstValueFrom(
         this.httpService.get(
           `${georisquesUrl}?latlon=${address.longitude},${address.latitude}`,
-          { timeout: 5000 },
+          { timeout: 15000 },
         ),
       );
 
