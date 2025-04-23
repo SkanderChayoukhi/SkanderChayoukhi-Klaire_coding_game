@@ -2,10 +2,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe, BadRequestException } from '@nestjs/common';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
+import { ConfigService } from '@nestjs/config';
 
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  const config = app.get(ConfigService);
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (errors) => {
@@ -20,7 +22,7 @@ async function bootstrap() {
   );
 
   app.useGlobalFilters(new HttpExceptionFilter());
-
-  await app.listen(8000);
+  const port = config.get<number>('app.port') || 8000; 
+  await app.listen(port);
 }
 bootstrap();

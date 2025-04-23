@@ -4,12 +4,14 @@ import { Repository } from 'typeorm';
 import { Address } from './entities/address.entity';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class AddressService {
   private readonly logger = new Logger(AddressService.name);
 
   constructor(
+    private config: ConfigService,
     @InjectRepository(Address)
     private addressRepository: Repository<Address>,
     private httpService: HttpService,
@@ -17,9 +19,10 @@ export class AddressService {
 
   async create(query: string): Promise<Address | null> {
     try {
+      const banUrl = this.config.get<string>('app.banApiUrl');
       const response = await firstValueFrom(
         this.httpService.get(
-          `https://api-adresse.data.gouv.fr/search/?q=${encodeURIComponent(query)}&limit=1`,
+          `${banUrl}/?q=${encodeURIComponent(query)}&limit=1`,
           { timeout: 5000 }, // set a request timeout
         ),
       );
@@ -51,9 +54,11 @@ export class AddressService {
       const address = await this.addressRepository.findOne({ where: { id } });
       if (!address) return null;
 
+      const georisquesUrl = this.config.get<string>('app.georisquesApiUrl');
+
       const response = await firstValueFrom(
         this.httpService.get(
-          `https://www.georisques.gouv.fr/api/v3/v1/resultats_rapport_risque?latlon=${address.longitude},${address.latitude}`,
+          `${georisquesUrl}?latlon=${address.longitude},${address.latitude}`,
           { timeout: 5000 },
         ),
       );
