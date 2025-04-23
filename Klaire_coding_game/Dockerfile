@@ -1,17 +1,26 @@
-FROM node:18-alpine AS builder
+FROM node:20 AS builder
 WORKDIR /app
+
+RUN apt-get update && apt-get install -y python3 build-essential
+
 COPY package*.json ./
 RUN npm ci
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine
+FROM node:20
 WORKDIR /app
+
+
+RUN apt-get update && apt-get install -y python3 build-essential
+
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/.env.example ./.env
-COPY --from=builder /app/data ./data
+
+
+RUN npm rebuild sqlite3
 
 EXPOSE 8000
-CMD ["npm", "run", "start:prod"]
+CMD ["node", "dist/main"]

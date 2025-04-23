@@ -11,7 +11,7 @@ services:
       - NODE_ENV=production
       - TYPEORM_DATABASE=/app/data/db.sqlite
       - BAN_API_URL=https://api-adresse.data.gouv.fr/search
-      - GEORISQUES_API_URL=https://www.georisques.gouv.fr/api/v3/v1/resultats_rapport_risque
+      - GEORISQUES_API_URL=https://georisques.gouv.fr/api/v1/resultats_rapport_risque
     healthcheck:
       test: ['CMD-SHELL', 'curl -f http://localhost:8000/api/health || exit 1']
       interval: 30s
