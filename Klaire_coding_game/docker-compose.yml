@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - '8000:8000'
+    volumes:
+      - ./data:/app/data
+    environment:
+      - NODE_ENV=production
+      - TYPEORM_DATABASE=/app/data/db.sqlite
+      - BAN_API_URL=https://api-adresse.data.gouv.fr/search
+      - GEORISQUES_API_URL=https://www.georisques.gouv.fr/api/v3/v1/resultats_rapport_risque
