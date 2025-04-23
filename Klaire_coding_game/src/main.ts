@@ -10,7 +10,8 @@ async function bootstrap() {
     new ValidationPipe({
       exceptionFactory: (errors) => {
         const firstError = errors[0];
-        const errorMessage = Object.values(firstError.constraints)[0];
+        const constraints = firstError?.constraints;
+        const errorMessage = constraints ? Object.values(constraints)[0] : 'Validation error';
         return new BadRequestException({
           error: errorMessage,
         });
