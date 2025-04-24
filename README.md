@@ -39,7 +39,7 @@ graph TD
 
    ```bash
    git clone https://github.com/SkanderChayoukhi/SkanderChayoukhi-Klaire_coding_game.git
-   cd SkanderChayoukhi-Klaire_coding_game
+   cd Klaire_coding_game
    ```
 
 2. Configurer l'environnement :
