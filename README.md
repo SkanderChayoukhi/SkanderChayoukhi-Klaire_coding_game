@@ -74,7 +74,6 @@ graph TD
       "longitude": -2.73745
     }
     ```
-
 ![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
 
 ![Image](https://github.com/user-attachments/assets/db06149d-1481-4df9-a3a8-6c3aa397e814)
@@ -85,7 +84,7 @@ graph TD
 
 ### Consultation des risques environnementaux
 
-- **GET** `/api/addresses/:id/risks`
+- **GET** `/api/addresses/id/risks`
   - **Réponse (200)** :
     ```json
     {
