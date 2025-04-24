@@ -5,6 +5,7 @@ import { AddressModule } from './address/address.module';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import configuration from './config/configuration';
+import { HealthModule } from './health/health.module';
 
 
 @Module({
@@ -31,6 +32,7 @@ import configuration from './config/configuration';
       }),
       inject: [ConfigService],  }),
     AddressModule,
+    HealthModule,
   ],
 })
 export class AppModule {}
