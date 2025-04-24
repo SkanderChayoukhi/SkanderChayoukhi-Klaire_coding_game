@@ -62,6 +62,19 @@ graph TD
 - **POST** `/api/addresses`
   - **Body** : `{ "q": "8 bd du Port" }`
   - **Réponse (201)** :
+
+      ```json
+{
+  "id": 1,
+  "label": "8 bd du Port, 56170 Sarzeau",
+  "housenumber": "8",
+  "street": "bd du Port",
+  "postcode": "56170",
+  "citycode": "56242",
+  "latitude": 47.58234,
+  "longitude": -2.73745
+}
+    ```
     `json
 {
   "id": 1,
