@@ -62,7 +62,7 @@ graph TD
 - **POST** `/api/addresses`
   - **Body** : `{ "q": "8 bd du Port" }`
   - **Réponse (201)** :
-    `json
+    ```json
 {
   "id": 1,
   "label": "8 bd du Port, 56170 Sarzeau",
@@ -73,7 +73,8 @@ graph TD
   "latitude": 47.58234,
   "longitude": -2.73745
 }
-`
+ ```
+  
     ![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
 
 ![Image](https://github.com/user-attachments/assets/db06149d-1481-4df9-a3a8-6c3aa397e814)
