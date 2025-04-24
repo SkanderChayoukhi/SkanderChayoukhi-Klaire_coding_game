@@ -110,7 +110,7 @@ graph TD
 
 ## 🧪 Tests
 
-Les tests unitaires et end-to-end sont situés dans le dossier `test/` :
+Les tests unitaires sont situés dans src/address/address.service.spec.ts et end-to-end sont situés dans le dossier `test/` :
 
 ```bash
 npm run test
