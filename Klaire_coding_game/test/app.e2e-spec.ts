@@ -1,4 +1,3 @@
-// test/app.e2e-spec.ts
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
@@ -30,12 +29,11 @@ describe('AppController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
-    // Add validation pipe with proper configuration
     app.useGlobalPipes(new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
-      disableErrorMessages: false, // Ensure error messages are included
+      disableErrorMessages: false, 
     }));
     
     addressRepository = moduleFixture.get<Repository<Address>>(getRepositoryToken(Address));
@@ -53,7 +51,7 @@ describe('AppController (e2e)', () => {
   });
 
   describe('POST /api/addresses', () => {
-// Update just the failing test case in app.e2e-spec.ts
+
 it('should reject empty query (400)', () => {
   return request(app.getHttpServer())
     .post('/api/addresses')

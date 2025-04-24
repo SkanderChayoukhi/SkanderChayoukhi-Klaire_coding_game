@@ -18,7 +18,7 @@ import { HealthModule } from './health/health.module';
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         type: 'sqlite',
-        database: config.get<string>('app.databasePath'), // Use the database path from the configuration
+        database: config.get<string>('app.databasePath'), 
         entities: [Address],
         synchronize: true,
       }),
@@ -28,7 +28,7 @@ import { HealthModule } from './health/health.module';
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         timeout: 5000,
-        baseURL: config.get<string>('app.banApiUrl'), // Use the base URL from the configuration
+        baseURL: config.get<string>('app.banApiUrl'), 
       }),
       inject: [ConfigService],  }),
     AddressModule,
