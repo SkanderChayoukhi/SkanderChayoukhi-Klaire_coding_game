@@ -74,6 +74,11 @@ graph TD
       "longitude": -2.73745
     }
     ```
+
+![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
+
+![Image](https://github.com/user-attachments/assets/db06149d-1481-4df9-a3a8-6c3aa397e814)
+
   - **Erreurs** :
     - 400 : Requête invalide (`q` vide ou manquant)
     - 404 : Adresse non trouvée
@@ -92,6 +97,11 @@ graph TD
       ]
     }
     ```
+
+![Image](https://github.com/user-attachments/assets/17b57e92-87ad-4cc3-ad0a-bb1d3a85fdb4)
+
+
+
   - **Erreurs** :
     - 404 : Adresse non trouvée
 
@@ -110,7 +120,7 @@ graph TD
 
 ## 🧪 Tests
 
-Les tests unitaires sont situés dans src/address/address.service.spec.ts et end-to-end sont situés dans le dossier `test/` :
+Les tests unitaires sont situés dans `src/address/address.service.spec.ts` et end-to-end sont situés dans le dossier `test/` :
 
 ```bash
 npm run test
