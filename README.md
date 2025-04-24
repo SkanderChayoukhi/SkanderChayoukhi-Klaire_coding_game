@@ -7,6 +7,6 @@
 [![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)](https://sqlite.org/)
 
 ## 🚨 Correction Critique
-**URL corrigée pour l'API Géorisques** (l'originale était obsolète) :
+**URL corrigée pour l'API Géorisques** (l'originale était obsolète) (https://www.georisques.gouv.fr/api/v3/v1/resultats_rapport_risque?latlon={lon},{lat}) :
 ```bash
 https://georisques.gouv.fr/api/v1/resultats_rapport_risque?latlon={lon},{lat}
