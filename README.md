@@ -62,25 +62,25 @@ graph TD
 - **POST** `/api/addresses`
   - **Body** : `{ "q": "8 bd du Port" }`
   - **Réponse (201)** :
-    ```json
-    {
-      "id": 1,
-      "label": "8 bd du Port, 56170 Sarzeau",
-      "housenumber": "8",
-      "street": "bd du Port",
-      "postcode": "56170",
-      "citycode": "56242",
-      "latitude": 47.58234,
-      "longitude": -2.73745
-    }
-    ```
-![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
+    `json
+{
+  "id": 1,
+  "label": "8 bd du Port, 56170 Sarzeau",
+  "housenumber": "8",
+  "street": "bd du Port",
+  "postcode": "56170",
+  "citycode": "56242",
+  "latitude": 47.58234,
+  "longitude": -2.73745
+}
+`
+    ![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
 
 ![Image](https://github.com/user-attachments/assets/db06149d-1481-4df9-a3a8-6c3aa397e814)
 
-  - **Erreurs** :
-    - 400 : Requête invalide (`q` vide ou manquant)
-    - 404 : Adresse non trouvée
+- **Erreurs** :
+  - 400 : Requête invalide (`q` vide ou manquant)
+  - 404 : Adresse non trouvée
 
 ### Consultation des risques environnementaux
 
@@ -99,15 +99,43 @@ graph TD
 
 ![Image](https://github.com/user-attachments/assets/17b57e92-87ad-4cc3-ad0a-bb1d3a85fdb4)
 
-
-
-  - **Erreurs** :
-    - 404 : Adresse non trouvée
+- **Erreurs** :
+  - 404 : Adresse non trouvée
 
 ### Healthcheck
 
 - **GET** `/api/health`
   - **Réponse** : `{ "status": "OK" }`
+
+![Image](https://github.com/user-attachments/assets/64460f8d-c873-4c00-8123-88c83d18f8f0)
+
+#### 🩺 Health check Docker
+
+Un health check Docker est un mécanisme intégré permettant de vérifier régulièrement si votre application dans le conteneur fonctionne correctement.
+
+Exemple dans le `docker-compose.yml` :
+
+```yaml
+healthcheck:
+  test: ["CMD-SHELL", "curl -f http://localhost:8000/api/health || exit 1"]
+  interval: 30s
+  timeout: 10s
+  retries: 3
+```
+
+| Paramètre  | Explication                                                                                                    |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| `test`     | Commande exécutée pour vérifier la santé (ici, un `curl` sur `/api/health` qui échoue si le statut HTTP ≥ 400) |
+| `interval` | Fréquence des vérifications (toutes les 30 secondes)                                                           |
+| `timeout`  | Délai maximal d’attente pour la commande (10 secondes)                                                         |
+| `retries`  | Nombre d’échecs consécutifs avant de marquer le conteneur comme "unhealthy"                                    |
+
+**Visualisation :**
+
+- `docker ps` affiche le statut du conteneur (`(healthy)` ou `(unhealthy)`).
+- `docker inspect --format='{{json .State.Health}}' <container>` donne le détail des checks.
+
+L’endpoint `/api/health` doit toujours retourner `{ "status": "OK" }` (HTTP 200) si l’application fonctionne correctement.
 
 ## ⚙️ Variables d'environnement nécessaires
 
