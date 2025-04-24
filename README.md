@@ -63,16 +63,18 @@ graph TD
   - **Body** : `{ "q": "8 bd du Port" }`
   - **Réponse (201)** :
     ```json
-{
-  "id": 1,
-  "label": "8 bd du Port, 56170 Sarzeau",
-  "housenumber": "8",
-  "street": "bd du Port",
-  "postcode": "56170",
-  "citycode": "56242",
-  "latitude": 47.58234,
-  "longitude": -2.73745
-}```
+    {
+     "id": 1,
+      "label": "8 bd du Port, 56170 Sarzeau",
+     "housenumber": "8",
+      "street": "bd du Port",
+     "postcode": "56170",
+      "citycode": "56242",
+      "latitude": 47.58234,
+      "longitude": -2.73745
+    }
+    ```
+
   
     ![Image](https://github.com/user-attachments/assets/bbdc7c40-bd6e-472b-9862-a16107118135)
 
